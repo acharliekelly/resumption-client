@@ -23,25 +23,31 @@
     </head>
     <body class="container">
       <header class="row">
-        <h1 class="col-8">Resumption</h1>
+        <div class="col-8">
+          <h1>Resumption</h1>
+          <div id="userMessage"></div>
+        </div>
         <nav class="col-4">
           <div class="no-token">
             <button id="signupBtn" class="modal-btn btn btn-dark" data-toggle="modal" data-target="#modalSignupFormDialog">Sign Up</button>
             <button id="loginBtn" class="modal-btn btn btn-dark" data-toggle="modal" data-target="#modalLoginFormDialog">Log In</button>
           </div>
           <div class="auth-token">
-            <button id="changepwBtn" class="auth-token modal-btn btn theme-button1" data-toggle="modal" data-target="#modalChangePasswordFormDialog">Change Password</button>
-            <button id="signoutBtn" class="auth-token btn theme-button1">Sign Out</button>
+            <button id="changepwBtn" class="auth-token modal-btn btn btn-outline-dark" data-toggle="modal" data-target="#modalChangePasswordFormDialog">Change Password</button>
+            <button id="signoutBtn" class="auth-token btn btn-outline-dark">Sign Out</button>
           </div>
         </nav>
       </header>
       <main class="row auth-token">
         <nav class="col-2">
           <!-- left nav -->
-          <button id="btnMyResumes" class="btn btn-primary">My Resumes</button>
-          <button id="btnCreateResume" class="btn btn-primary">New Resume</button>
-          <button id="btnSections" class="btn btn-secondary">Show Sections</button>
-          <button id="btnNewSection" class="btn btn-secondary">New Section</button>
+          <button id="btnMyResumes" class="btn btn-outline-primary">My Resumes</button>
+          <button id="btnCreateResume" class="btn btn-outline-secondary">New Resume</button>
+          <br>
+          <button id="btnSections" class="btn btn-outline-primary">Show Sections</button>
+          <button id="btnNewSection" class="btn btn-outline-secondary">New Section</button>
+          <br>
+          <button id="btnTemplates" class="btn btn-outline-primary">Show Templates</button>
         </nav>
         <div id="queryResults" class="col-10">
           <!-- display results here -->
