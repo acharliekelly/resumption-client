@@ -9,5 +9,5 @@
 const authEvents = require('./auth/events')
 
 $(() => {
-  authEvents.initHandlers()
+  // authEvents.initHandlers()
 })
