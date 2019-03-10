@@ -49,7 +49,6 @@ const deleteLayout = (data) => {
   })
 }
 
-
 // Sections
 const getMySections = () => {
   return $.ajax({
@@ -79,9 +78,9 @@ const updateSection = (data) => {
   })
 }
 
-const deleteSection = (sectionId) => {
+const deleteSection = (data) => {
   return $.ajax({
-    url: config.apiUrl + '/sections/' + sectionId,
+    url: config.apiUrl + '/sections/' + data.id,
     method: 'DELETE'
   })
 }
