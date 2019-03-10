@@ -1,1 +1,13 @@
 @import '~bootstrap/scss/bootstrap';
+
+
+nav {
+  background-color: #dedede;
+  border: thin solid #cdcdcd;
+  border-radius: 3px;
+  padding: 2%;
+
+  button {
+    margin: 5px 0;
+  }
+}
