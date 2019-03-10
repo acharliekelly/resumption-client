@@ -11,7 +11,6 @@ const isAuthenticated = () => {
 }
 
 const userMessage = function (message, alertClass = 'info') {
-  // toastMessage(message, 'Message')
   alertMessage(message, alertClass)
 }
 
@@ -20,7 +19,6 @@ const warningMessage = function (message) {
 }
 
 const successMessage = function (message) {
-  // toastMessage(message, 'Success', 'bg-success')
   alertMessage(message, 'success')
 }
 
