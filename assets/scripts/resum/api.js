@@ -85,9 +85,9 @@ const deleteSection = (data) => {
   })
 }
 
-const removeSectionFromLayout = (id) => {
+const removeSectionFromLayout = (data) => {
   return $.ajax({
-    url: config.apiUrl + '/section_layouts/' + id,
+    url: config.apiUrl + '/section_layouts/' + data.id,
     method: 'DELETE'
   })
 }

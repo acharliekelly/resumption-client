@@ -52,6 +52,13 @@ const onAddSectionToLayout = (event) => {
     .catch(ui.updateFailure)
 }
 
+const onRemoveSectionFromLayout = (event) => {
+  const formData = getFormData(event)
+  api.removeSectionFromLayout(formData)
+    .then(ui.updateSuccess)
+    .catch(ui.updateFailure)
+}
+
 // Sections
 const onGetSections = () => {
   api.getMySections().then(ui.gotSections).catch(ui.retrievalFailure)
@@ -88,6 +95,7 @@ const onDeleteSectionSubmit = (event) => {
     .catch(ui.deletionFailure)
 }
 
+// Templates
 const onGetTemplates = () => {
   api.getTemplates().then(ui.gotTemplates).catch(ui.retrievalFailure)
 }
@@ -114,9 +122,12 @@ const initHandlers = () => {
   $('#btnTemplates').on('click', onGetTemplates)
 
   // delegate
-  $('#queryResults').on('click', '.section button', onGetSection)
-  $('#queryResults').on('click', '.layout button', onGetLayout)
-  $('#queryResults').on('click', '.template button', onGetTemplate)
+
+  $('#queryResults').on('click', '.layout button.open-layout', onGetLayout)
+  $('#queryResults').on('click', '.layout-edit button.add-section', onGetSections)
+  // $('#queryResults').on('click', '.layout-edit button.delete-layout', onDeleteLayoutSubmit)
+  $('#queryResults').on('click', '.section button.update-section', onGetSection)
+  $('#queryResults').on('click', '.section button.remove-section', onRemoveSectionFromLayout)
 }
 
 module.exports = {
