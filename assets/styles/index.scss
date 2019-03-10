@@ -11,3 +11,12 @@ nav {
     margin: 5px 0;
   }
 }
+
+.todo {
+  background-color: #000;
+  color: #0ff;
+  font-family: monospace;
+  &:before {
+    content: 'TODO: ';
+  }
+}

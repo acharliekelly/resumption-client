@@ -40,6 +40,11 @@ const alertMessage = function (message, cls = 'info', timeout = 5000) {
   }, timeout)
 }
 
+const todoOutput = (message, elementId) => {
+  const html = `<div class="todo">${message}</div>`
+  $(`#${elementId}`).html(html)
+}
+
 module.exports = {
   isAuthenticated,
   userMessage,
@@ -47,5 +52,6 @@ module.exports = {
   successMessage,
   failure,
   errorMessage,
-  alertMessage
+  alertMessage,
+  todoOutput
 }
