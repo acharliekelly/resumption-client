@@ -21,15 +21,35 @@
             }
           </style>
     </head>
-    <body>
-      <header>
-        <h1>Resumption</h1>
+    <body class="container">
+      <header class="row">
+        <h1 class="col-8">Resumption</h1>
+        <nav class="col-4">
+          <div class="no-token">
+            <button id="signupBtn" class="modal-btn btn btn-dark" data-toggle="modal" data-target="#modalSignupFormDialog">Sign Up</button>
+            <button id="loginBtn" class="modal-btn btn btn-dark" data-toggle="modal" data-target="#modalLoginFormDialog">Log In</button>
+          </div>
+          <div class="auth-token">
+            <button id="changepwBtn" class="auth-token modal-btn btn theme-button1" data-toggle="modal" data-target="#modalChangePasswordFormDialog">Change Password</button>
+            <button id="signoutBtn" class="auth-token btn theme-button1">Sign Out</button>
+          </div>
+        </nav>
       </header>
-      <!-- Content -->
-
-
-      <!-- end content -->
-
+      <main class="row auth-token">
+        <nav class="col-2">
+          <!-- left nav -->
+          <button id="btnMyResumes" class="btn btn-primary">My Resumes</button>
+          <button id="btnCreateResume" class="btn btn-primary">New Resume</button>
+          <button id="btnSections" class="btn btn-secondary">Show Sections</button>
+          <button id="btnNewSection" class="btn btn-secondary">New Section</button>
+        </nav>
+        <div id="queryResults" class="col-10">
+          <!-- display results here -->
+        </div>
+      </main>
+      <footer class="row">
+        &copy; 2019
+      </footer>
       <!-- Modal Form -->
       <!-- invisible when not in use -->
         <div class="modal fade" id="modalLoginFormDialog" tabindex="-1" role="dialog" aria-labelledby="modalLoginTitle" aria-hidden="true">
