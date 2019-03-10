@@ -1,0 +1,14 @@
+<div class="section" data-id="{{section.id}}">
+  <h4><small>Section Name: </small>{{section.name}}</h4>
+  <h5><small>Type: </small><span class="todo">get section type from API</span></h5>
+  <h5><small>Format: </small>
+    {{#if section.format}}
+      {{section.format}}
+    {{else}}
+      Not specified
+    {{/if}}</h5>
+    <div class="section-content">
+      {{section.content}}
+    </div>
+
+</div>

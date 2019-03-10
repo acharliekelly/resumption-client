@@ -1,0 +1,61 @@
+<div class="layout container" data-id="{{layout.id}}">
+  <div class="row">
+    <div class="col-2 h4">Name: </div>
+    <div class="col-8 h3">{{layout.layout_name}}</div>
+    <div class="col-2">
+      <button class="btn btn-secondary edit-layout-name">Edit</button>
+    </div>
+  </div>
+  <div class="row template">
+    <div class="col-2 h4">Template: </div>
+    <div class="col-5 h3">{{layout.template.name}}</div>
+    <div class="col-3">
+      <a target="_blank" href="{{layout.template.author_url}}">{{layout.template.author}}</a>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-secondary change-template">Change</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">Sections:</div>
+    <div class="col-10"></div>
+  </div>
+  {{#each layout.sections as |section|}}
+  <section class="section" data-id="{{section.id}}">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-2">
+        <small>Name: </small>
+      </div>
+      <div class="col-8 h4">{{section.name}}</div>
+    </div>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-2">
+        <small>Type: </small>
+      </div>
+      <div class="col-4 todo">get section type from API</div>
+      {{#if section.format}}
+      <div class="col-2">
+        <small>Format: </small>
+      </div>
+      <div class="col-2 h5">{{section.format}}</div>
+      {{/if}}
+    </div>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        {{section.content}}
+      </div>
+      <div class="col-2 btn-group" role="group">
+        <button class="btn btn-secondary update-section" data-id="{{section.id}}">Edit</button>
+        <button class="btn btn-secondary remove-section" data-id="{{section.id}}">Remove</button>
+      </div>
+    </div>
+  </section>
+  {{/each}}
+  <div class="row layout-edit">
+    <button class="btn btn-outline-secondary add-section" data-id="{{layout.id}}">Add Section</button>
+    <button class="btn btn-outline-danger delete-layout" data-id="{{layout.id}}">Delete Resume</button>
+  </div>
+</div>

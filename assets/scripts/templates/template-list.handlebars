@@ -1,0 +1,9 @@
+{{#each templates as |template|}}
+<section class="template">
+  <h3><small>Name: </small>{{template.name}}</h3>
+  <h5><small>Author: </small>
+    <a target="_blank" href="{{template.author_url}}">{{template.author}}</a>
+  </h5>
+  <button class="btn btn-outline-primary select-template" data-id="{{template.id}}">Select</button>
+</section>
+{{/each}}
