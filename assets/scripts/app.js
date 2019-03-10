@@ -1,9 +1,9 @@
 'use strict'
 
-// const authEvents = require('./auth/events')
 const resEvents = require('./resum/events')
+const authEvents = require('./auth/events')
 
 $(() => {
-  // authEvents.initHandlers()
+  authEvents.initHandlers()
   resEvents.initHandlers()
 })

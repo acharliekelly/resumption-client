@@ -20,6 +20,7 @@ const onGetLayout = (event) => {
 }
 
 const onCreateLayoutClick = () => {
+  console.log('Create Layout button clicked')
   // show form
 }
 
@@ -51,7 +52,6 @@ const onAddSectionToLayout = (event) => {
     .catch(ui.updateFailure)
 }
 
-
 // Sections
 const onGetSections = () => {
   api.getMySections().then(ui.gotSections).catch(ui.retrievalFailure)
@@ -63,6 +63,7 @@ const onGetSection = (event) => {
 }
 
 const onCreateSectionClick = () => {
+  console.log('Create Section button clicked')
   // show form
 }
 
@@ -118,6 +119,6 @@ const initHandlers = () => {
   $('#queryResults').on('click', '.template button', onGetTemplate)
 }
 
-module.events = {
+module.exports = {
   initHandlers
 }
