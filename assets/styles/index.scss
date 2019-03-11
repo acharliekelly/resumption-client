@@ -1,16 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 
+@import 'layout.scss';
 
-nav {
-  background-color: #dedede;
-  border: thin solid #cdcdcd;
-  border-radius: 3px;
-  padding: 2%;
-
-  button {
-    margin: 5px 0;
-  }
-}
 
 .todo {
   background-color: #000;

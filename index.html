@@ -23,11 +23,11 @@
     </head>
     <body class="container">
       <header class="row">
-        <div class="col-8">
+        <div id="titlePanel" class="col-md-6 panel">
           <h1>Resumption</h1>
           <div id="userMessage"></div>
         </div>
-        <nav class="col-4">
+        <nav id="authenticationPanel" class="col-md-6 panel">
           <div class="no-token">
             <button id="signupBtn" class="modal-btn btn btn-dark" data-toggle="modal" data-target="#modalSignupFormDialog">Sign Up</button>
             <button id="loginBtn" class="modal-btn btn btn-dark" data-toggle="modal" data-target="#modalLoginFormDialog">Log In</button>
@@ -39,23 +39,26 @@
         </nav>
       </header>
       <main class="row auth-token">
-        <nav class="col-2">
+        <nav id="menuPanel" class="col-md-2 panel menu">
           <!-- left nav -->
-          <button id="btnMyResumes" class="btn btn-outline-primary">My Resumes</button>
-          <button id="btnCreateResume" class="btn btn-outline-secondary">New Resume</button>
-          <br>
-          <button id="btnSections" class="btn btn-outline-primary">Show Sections</button>
-          <button id="btnNewSection" class="btn btn-outline-secondary">New Section</button>
-          <br>
-          <button id="btnTemplates" class="btn btn-outline-primary">Show Templates</button>
+          <div class="label">Menu</div>
+          <div class="button-group">
+            <button id="btnMyResumes" class="btn btn-outline-primary">My Resumes</button>
+            <button id="btnCreateResume" class="btn btn-outline-secondary">New Resume</button>
+            <hr>
+            <button id="btnSections" class="btn btn-outline-primary">Show Sections</button>
+            <button id="btnNewSection" class="btn btn-outline-secondary">New Section</button>
+            <hr>
+            <button id="btnTemplates" class="btn btn-outline-primary">Show Templates</button>
+          </div>
         </nav>
-        <div id="queryResults" class="col-10">
+        <div id="displayPanel" class="col-md-10 panel">
           <!-- display results here -->
         </div>
       </main>
-      <footer class="row">
+      <!-- <footer class="row">
         &copy; 2019
-      </footer>
+      </footer> -->
       <!-- Modal Form -->
       <!-- invisible when not in use -->
         <div class="modal fade" id="modalLoginFormDialog" tabindex="-1" role="dialog" aria-labelledby="modalLoginTitle" aria-hidden="true">

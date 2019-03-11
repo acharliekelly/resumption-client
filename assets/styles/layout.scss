@@ -1,0 +1,47 @@
+/* Layout */
+
+
+.container {
+  // display: flex;
+  // flex-direction: row;
+}
+
+.grid {
+  margin: 5px auto;
+  background: none;
+}
+
+.panel {
+  background-color: #e5e5e5;
+  margin: 10px auto;
+  border: inset thin #999;
+  border-radius: 5px;
+  padding: 5px;
+  height: 100%;
+}
+
+header {
+  text-align: center;
+  margin: 20px auto;
+
+  .title-image {
+    height: 15vh;
+  }
+}
+
+main {
+  margin: 0 10%;
+}
+
+nav {
+  background-color: #dedede;
+  border: thin solid #cdcdcd;
+  border-radius: 3px;
+  padding: 2%;
+  text-align: center;
+
+  button {
+    margin: 5px 0;
+    width: 80%;
+  }
+}
