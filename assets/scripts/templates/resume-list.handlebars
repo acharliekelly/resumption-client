@@ -1,0 +1,18 @@
+{{#each resumes as |resume|}}
+<section class="resume row">
+  <div class="col-md-2">
+    <small>Name: </small>
+  </div>
+  <div class="col-md-4 h4">
+    {{resume.name}}
+  </div>
+  {{#if resume.format}}
+  <div class="col-md-2">
+    <small>{{resume.format}}</small>
+  </div>
+  {{/if}}
+  <div class="col-md-2">
+    <button class="btn btn-outline-primary open-resume" data-id="{{resume.id}}">Open</button>
+  </div>
+</section>
+{{/each}}
