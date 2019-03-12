@@ -46,7 +46,6 @@ const updateResumeName = (data) => {
   })
 }
 
-
 const updateResumeContent = (data) => {
   return $.ajax({
     url: config.apiUrl + '/resumes/' + data.id,
@@ -64,7 +63,6 @@ const deleteResume = (resumeId) => {
     method: 'DELETE'
   })
 }
-
 
 module.exports = {
   getMyResumes,

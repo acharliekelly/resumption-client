@@ -1,6 +1,6 @@
 'use strict'
 
-// resum/ui.js
+// basic/ui.js
 
 const utils = require('../utils')
 
@@ -25,6 +25,7 @@ const gotOneResume = (responseData) => {
 
 // refreshes single resume vew - run after any update
 const refreshResumeView = (responseData) => {
+  utils.storeCurrentResume(responseData.resume)
   const resumeHtml = resumeViewTmpl({ resume: responseData.resume })
   $('#displayPanel').html(resumeHtml)
 }
@@ -53,6 +54,7 @@ const creationFailure = (responseData) => {
 
 const deletionSuccess = (responseData) => {
   console.log(responseData)
+
   utils.successMessage('Resume Deleted!')
   // go back to list view
   $('#btnMyResumes').trigger('click')
@@ -78,6 +80,5 @@ module.exports = {
   creationSuccess,
   creationFailure,
   deletionSuccess,
-  deletionFailure,
-  publishResumeSuccess
+  deletionFailure
 }
