@@ -3,7 +3,7 @@
     <div class="col-2 h4">Name: </div>
     <div class="col-8 h3">{{resume.name}}</div>
     <div class="col-2">
-      <button class="btn btn-outline-secondary edit-resume-name" data-id="{{resume.id}}">Edit</button>
+      <!-- <button class="btn btn-outline-secondary edit-resume-name" data-id="{{resume.id}}">Edit</button> -->
     </div>
   </div>
   {{#if resume.format}}
@@ -13,17 +13,17 @@
   </div>
   {{/if}}
   <div class="row">
-    <div class="col"></div>
+    <div class="col-2">Body: </div>
     <div class="col-10">
       {{resume.content}}
     </div>
-    <div class="col">
-      <button class="btn btn-outline-secondary edit-resume-content" data-id="{{resume.id}}">Edit</button>
-    </div>
   </div>
   <div class="row">
-    <div class="col-10"></div>
-    <div class="col-2">
+    <div class="col-8"></div>
+    <div class="col">
+      <button class="btn btn-outline-secondary edit-resume" data-id="{{resume.id}}">Edit</button>
+    </div>
+    <div class="col">
       <button class="btn btn-outline-secondary delete-resume" data-id="{{resume.id}}">Delete</button>
     </div>
   </div>
