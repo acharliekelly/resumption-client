@@ -18,6 +18,11 @@ const refreshAuthElements = () => {
     $('.no-token').show()
     $('.auth-enable').prop('disabled', true)
   }
+  clearUserData()
+}
+
+const clearUserData = () => {
+  $('#displayPanel').html('')
 }
 
 // Public
@@ -41,7 +46,8 @@ const loginSuccess = (responseData) => {
 }
 
 const hideModal = () => {
-  $('#modalFormDialog').modal('hide')
+  $('.modal').modal('hide')
+  $('.modal-form input').val('')
 }
 
 // Public
@@ -85,6 +91,7 @@ const signOutFail = () => {
 
 module.exports = {
   refreshAuthElements,
+  clearUserData,
   authFail,
   authenticationError,
   loginSuccess,
