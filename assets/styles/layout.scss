@@ -11,6 +11,10 @@
   background: none;
 }
 
+.panel-wrapper {
+  padding: 0 2px;
+}
+
 .panel {
   background-color: #e5e5e5;
   margin: 10px auto;
@@ -18,6 +22,7 @@
   border-radius: 5px;
   padding: 5px;
   height: 100%;
+  width: 98%;
 }
 
 header {
@@ -31,6 +36,10 @@ header {
 
 main {
   margin: 0 10%;
+}
+
+#displayPanel {
+  min-height: 400px;
 }
 
 nav {

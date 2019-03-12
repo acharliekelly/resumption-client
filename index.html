@@ -23,37 +23,45 @@
     </head>
     <body class="container">
       <header class="row">
-        <div id="titlePanel" class="col-md-6 panel">
-          <h1>Resumption</h1>
-          <div id="userMessage"></div>
+        <div class="col-md-6 panel-wrapper">
+          <div id="titlePanel" class="panel">
+            <h1>Resumption</h1>
+            <div id="userMessage"></div>
+          </div>
         </div>
-        <nav id="authenticationPanel" class="col-md-6 panel">
-          <div class="no-token">
-            <button id="signupBtn" class="modal-btn btn btn-dark" data-toggle="modal" data-target="#modalSignupFormDialog">Sign Up</button>
-            <button id="loginBtn" class="modal-btn btn btn-dark" data-toggle="modal" data-target="#modalLoginFormDialog">Log In</button>
-          </div>
-          <div class="auth-token">
-            <button id="changepwBtn" class="auth-token modal-btn btn btn-outline-dark" data-toggle="modal" data-target="#modalChangePasswordFormDialog">Change Password</button>
-            <button id="signoutBtn" class="auth-token btn btn-outline-dark">Sign Out</button>
-          </div>
-        </nav>
+        <div class="col-md-6 panel-wrapper">
+          <nav id="authenticationPanel" class="panel">
+            <div class="no-token">
+              <button id="signupBtn" class="modal-btn btn btn-dark" data-toggle="modal" data-target="#modalSignupFormDialog">Sign Up</button>
+              <button id="loginBtn" class="modal-btn btn btn-dark" data-toggle="modal" data-target="#modalLoginFormDialog">Log In</button>
+            </div>
+            <div class="auth-token">
+              <button id="changepwBtn" class="auth-token modal-btn btn btn-outline-dark" data-toggle="modal" data-target="#modalChangePasswordFormDialog">Change Password</button>
+              <button id="signoutBtn" class="auth-token btn btn-outline-dark">Sign Out</button>
+            </div>
+          </nav>
+        </div>
       </header>
       <main class="row auth-token">
-        <nav id="menuPanel" class="col-md-2 panel menu">
-          <!-- left nav -->
-          <div class="label">Menu</div>
-          <div class="button-group">
-            <button id="btnMyResumes" class="btn btn-outline-primary">My Resumes</button>
-            <button id="btnCreateResume" class="btn btn-outline-secondary">New Resume</button>
-            <!-- <hr>
-            <button id="btnSections" class="btn btn-outline-primary">Show Sections</button>
-            <button id="btnNewSection" class="btn btn-outline-secondary">New Section</button>
-            <hr>
-            <button id="btnTemplates" class="btn btn-outline-primary">Show Templates</button> -->
+        <div class="col-md-2 panel-wrapper">
+          <nav id="menuPanel" class="panel menu">
+            <!-- left nav -->
+            <div class="label">Menu</div>
+            <div class="button-group">
+              <button id="btnMyResumes" class="btn btn-outline-primary">My Resumes</button>
+              <button id="btnCreateResume" class="btn btn-outline-secondary">New Resume</button>
+              <!-- <hr>
+              <button id="btnSections" class="btn btn-outline-primary">Show Sections</button>
+              <button id="btnNewSection" class="btn btn-outline-secondary">New Section</button>
+              <hr>
+              <button id="btnTemplates" class="btn btn-outline-primary">Show Templates</button> -->
+            </div>
+          </nav>
+        </div>
+        <div class="col-md-10 panel-wrapper">
+          <div id="displayPanel" class="panel">
+            <!-- display results here -->
           </div>
-        </nav>
-        <div id="displayPanel" class="col-md-10 panel">
-          <!-- display results here -->
         </div>
       </main>
       <!-- <footer class="row">
@@ -71,7 +79,6 @@
                 </button>
               </div>
               <div class="modal-body">
-
                     <!-- Login Form -->
                 <form id="modalLoginForm">
                   <div id="loginFormContent">
@@ -93,8 +100,8 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn theme-button2" data-dismiss="modal">Close</button>
-                <button id="modalLoginSubmitBtn" type="button" class="btn theme-button1 modal-submit" data-target="#modalLoginForm">Submit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="modalLoginSubmitBtn" type="button" class="btn btn-primary modal-submit" data-target="#modalLoginForm">Submit</button>
               </div>
             </div>
           </div>
@@ -139,8 +146,8 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn theme-button2" data-dismiss="modal">Close</button>
-                <button id="modalSignupSubmitBtn" type="button" class="btn theme-button1 modal-submit" data-target="#modalSignupForm">Submit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="modalSignupSubmitBtn" type="button" class="btn btn-primary modal-submit" data-target="#modalSignupForm">Submit</button>
               </div>
             </div>
           </div>
@@ -185,8 +192,28 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn theme-button2" data-dismiss="modal">Close</button>
-                <button id="modalChangePasswordSubmitBtn" type="button" class="btn theme-button1 modal-submit" data-target="#modalChangePasswordForm">Submit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="modalChangePasswordSubmitBtn" type="button" class="btn btn-primary modal-submit" data-target="#modalChangePasswordForm">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="modalConfirmDeleteDialog" tabindex="-1" role="dialog" aria-labelledby="modalSignupTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalSignupTitle">Delete Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <span class="confirm-message">Are you sure you want to delete this resume?</span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button id="modalConfirmDeleteButton" type="button" class="btn btn-primary" data-target="#modalConfirmDelete">Delete</button>
               </div>
             </div>
           </div>
