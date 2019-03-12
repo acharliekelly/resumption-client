@@ -8,7 +8,6 @@ const utils = require('../utils')
 const resumeListTmpl = require('../templates/resume-list.handlebars')
 const resumeViewTmpl = require('../templates/resume-view.handlebars')
 
-
 const gotResumes = (responseData) => {
   refreshResumeList(responseData)
 }

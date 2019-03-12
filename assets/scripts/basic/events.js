@@ -24,11 +24,14 @@ const onOpenResume = (event) => {
     .catch(ui.retrievalFailure)
 }
 
+// New Resume button clicked -
+// display form, define submit fn
 const onClickCreate = () => {
   console.log('Create Resume button clicked!')
   // show Create form
   const formHtml = resumeForm()
   $('#displayPanel').html(formHtml)
+  $('#resume-form header').text('Create New Resume')
   $('#resumeUser').val(1)
   $('#resumeId').val('')
   $('#resumeForm').on('submit', onCreateSubmit)
@@ -42,43 +45,42 @@ const onCreateSubmit = (event) => {
     .catch(ui.creationFailure)
 }
 
+// Edit Resume button clicked -
+//
 const onClickEdit = () => {
-  console.log('Edit Resume Content button clicked!')
   // show form
-  const resume = utils.getCurrentResume()
-  const formHtml = resumeForm(resume)
+  const currentResume = utils.getCurrentResume()
+  const formHtml = resumeForm({ resume: currentResume })
   $('#displayPanel').html(formHtml)
-  $('#resumeForm #resumeId').val(resume.id)
-  $('#resumeForm #resumeUser').val(resume.user.id)
-  $('#resumeForm #resumeName').val(resume.name)
-  $('#resumeForm #resumeFormat').val(resume.format)
-  $('#resumeForm textarea').val(resume.content)
+  $('.resume-form header').text('Edit Resume ' + currentResume.id)
+  $('#resumeForm select').val(currentResume.format)
+  // $('#resumeForm #resumeId').val(currentResume.id)
+  // $('#resumeForm #resumeUser').val(currentResume.user.id)
+  // $('#resumeForm #resumeName').val(currentResume.name)
+  // $('#resumeForm #resumeFormat').val(currentResume.format)
+  // $('#resumeForm textarea').val(currentResume.content)
   $('#resumeForm').on('submit', onUpdateSubmit)
 }
 
 const onUpdateSubmit = (event) => {
   const formData = getFormData(event)
-  console.log('Update Form:', formData)
-  api.updateResume(formData.resume)
+  api.updateResume(formData)
     .then(ui.updateSuccess)
     .catch(ui.updateFailure)
 }
 
 const onClickDelete = (event) => {
   const resumeId = getTargetId(event)
-  // confirm, then delete
-  let confirm = true
-  console.log('Delete button clicked')
-  confirm = false
+  $('#modalConfirmDeleteButton').data('id', resumeId)
+  $('#modalConfirmDeleteDialog').modal('show')
+}
 
-  // TODO: Are you sure?
-  utils.userMessage('Delete is not allowed right now')
-
-  if (confirm) {
-    api.deleteResume(resumeId)
-      .then(ui.deletionSuccess)
-      .catch(ui.deletionFailure)
-  }
+const onDeleteConfirm = (event) => {
+  const resumeId = getTargetId(event)
+  $('#modalConfirmDeleteDialog').modal('hide')
+  api.deleteResume(resumeId)
+    .then(ui.deletionSuccess)
+    .catch(ui.deletionFailure)
 }
 
 const getTargetId = (event) => {
@@ -91,13 +93,16 @@ const getFormData = (event) => {
 }
 
 const initHandlers = () => {
+  // menu buttons
   $('#btnMyResumes').on('click', onGetResumes)
   $('#btnCreateResume').on('click', onClickCreate)
 
-  // delegate
+  // delegate buttons - will be created by handlebars
   $('#displayPanel').on('click', '.resume button.open-resume', onOpenResume)
   $('#displayPanel').on('click', '.resume-view button.edit-resume', onClickEdit)
   $('#displayPanel').on('click', '.resume-view button.delete-resume', onClickDelete)
+  // delete confirmed
+  $('#modalConfirmDeleteButton').on('click', onDeleteConfirm)
 }
 
 module.exports = {

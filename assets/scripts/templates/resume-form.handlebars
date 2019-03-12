@@ -1,14 +1,14 @@
-<div class="resume-update">
+<div class="resume-form">
+  <header>Resume Form</header>
   <form id="resumeForm" action="#">
   <div class="form-group row">
     <label class="col-4 col-form-label" for="resumeName">Name: </label>
     <div class="col-8">
-      <input id="resumeName" class="form-control" name="resume[name]" type="text" placeholder="{{resume.name}}" >
+      <input id="resumeName" class="form-control" name="resume[name]" type="text" value="{{resume.name}}" >
     </div>
   </div>
   <div class="form-group row">
     <label class="col-4 col-form-label" for="resumeFormat">Format: </label>
-    <div class="col-4" id="currentFormat">({{resume.format}})</div>
     <div class="col">
       <select class="form-control" id="resumeFormat" name="resume[format]">
         <option value="text">Text</option>

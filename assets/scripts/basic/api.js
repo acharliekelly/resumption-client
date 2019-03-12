@@ -29,31 +29,11 @@ const createResume = (data) => {
 }
 
 const updateResume = (data) => {
+  console.log('Update: ', data)
   return $.ajax({
-    url: config.apiUrl + '/resumes/' + data.id,
+    url: config.apiUrl + '/resumes/' + data.resume.id,
     method: 'PATCH',
     data
-  })
-}
-
-const updateResumeName = (data) => {
-  return $.ajax({
-    url: config.apiUrl + '/resumes/' + data.id,
-    method: 'PATCH',
-    data: {
-      'name': data.name
-    }
-  })
-}
-
-const updateResumeContent = (data) => {
-  return $.ajax({
-    url: config.apiUrl + '/resumes/' + data.id,
-    method: 'PATCH',
-    data: {
-      'format': data.format,
-      'content': data.content
-    }
   })
 }
 
@@ -68,8 +48,6 @@ module.exports = {
   getMyResumes,
   getResume,
   updateResume,
-  updateResumeName,
-  updateResumeContent,
   createResume,
   deleteResume
 }
