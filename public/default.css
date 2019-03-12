@@ -1,0 +1,6 @@
+/* Loads only if no JS or SCSS is present */
+
+
+body {
+  background-color: #000;
+}
