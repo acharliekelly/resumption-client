@@ -1,10 +1,12 @@
 'use strict'
 
-// resum/events.js
+// basic/events.js
 // Controller for app requests
 
+const utils = require('../utils')
 const api = require('./api')
 const ui = require('./ui')
+const resumeForm = require('../templates/resume-form.handlebars')
 const getFormFields = require('../../../lib/get-form-fields')
 
 const onGetResumes = () => {
@@ -25,52 +27,59 @@ const onOpenResume = (event) => {
 const onClickCreate = () => {
   console.log('Create Resume button clicked!')
   // show Create form
+  const formHtml = resumeForm()
+  $('#displayPanel').html(formHtml)
+  $('#resumeUser').val(1)
+  $('#resumeId').val('')
+  $('#resumeForm').on('submit', onCreateSubmit)
 }
 
 const onCreateSubmit = (event) => {
+  event.preventDefault()
   const formData = getFormData(event)
   api.createResume(formData)
     .then(ui.gotOneResume)
     .catch(ui.creationFailure)
 }
 
-const onClickEditName = () => {
-  console.log('Edit Resume Name button clicked!')
-  // show Edit Name input
-}
-
-const onEditNameSubmit = (event) => {
-  const formData = getFormData(event)
-  api.updateResumeName(formData)
-    .then(ui.updateSuccess)
-    .catch(ui.updateFailure)
-}
-
-const onClickEditContent = () => {
+const onClickEdit = () => {
   console.log('Edit Resume Content button clicked!')
   // show form
+  const resume = utils.getCurrentResume()
+  const formHtml = resumeForm(resume)
+  $('#displayPanel').html(formHtml)
+  $('#resumeForm #resumeId').val(resume.id)
+  $('#resumeForm #resumeUser').val(resume.user.id)
+  $('#resumeForm #resumeName').val(resume.name)
+  $('#resumeForm #resumeFormat').val(resume.format)
+  $('#resumeForm textarea').val(resume.content)
+  $('#resumeForm').on('submit', onUpdateSubmit)
 }
 
-const onEditContentSubmit = (event) => {
+const onUpdateSubmit = (event) => {
   const formData = getFormData(event)
-  api.updateResumeContent(formData)
+  console.log('Update Form:', formData)
+  api.updateResume(formData.resume)
     .then(ui.updateSuccess)
     .catch(ui.updateFailure)
-
 }
 
 const onClickDelete = (event) => {
   const resumeId = getTargetId(event)
   // confirm, then delete
-  let confirm = false
+  let confirm = true
   console.log('Delete button clicked')
+  confirm = false
+
+  // TODO: Are you sure?
+  utils.userMessage('Delete is not allowed right now')
+
   if (confirm) {
     api.deleteResume(resumeId)
       .then(ui.deletionSuccess)
       .catch(ui.deletionFailure)
   }
 }
-
 
 const getTargetId = (event) => {
   return $(event.target).data('id')
@@ -83,13 +92,12 @@ const getFormData = (event) => {
 
 const initHandlers = () => {
   $('#btnMyResumes').on('click', onGetResumes)
-  $('#btnCreateResume').on('click', onClickCreateResume)
+  $('#btnCreateResume').on('click', onClickCreate)
 
   // delegate
   $('#displayPanel').on('click', '.resume button.open-resume', onOpenResume)
-  $('#displayPanel').on('click', '.resume-view button.edit-resume-name', onClickEditResumeName)
-  $('#displayPanel').on('click', '.resume-view button.edit-resume-content', onClickEditResumeContent)
-  $('#displayPanel').on('click', '.resume-view button.delete-resume', onClickDeleteResume)
+  $('#displayPanel').on('click', '.resume-view button.edit-resume', onClickEdit)
+  $('#displayPanel').on('click', '.resume-view button.delete-resume', onClickDelete)
 }
 
 module.exports = {
