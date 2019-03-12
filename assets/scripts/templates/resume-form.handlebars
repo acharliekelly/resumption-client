@@ -1,0 +1,38 @@
+<div class="resume-update">
+  <form id="resumeForm" action="#">
+  <div class="form-group row">
+    <label class="col-4 col-form-label" for="resumeName">Name: </label>
+    <div class="col-8">
+      <input id="resumeName" class="form-control" name="resume[name]" type="text" placeholder="{{resume.name}}" >
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-4 col-form-label" for="resumeFormat">Format: </label>
+    <div class="col-4" id="currentFormat">({{resume.format}})</div>
+    <div class="col">
+      <select class="form-control" id="resumeFormat" name="resume[format]">
+        <option value="text">Text</option>
+        <option value="md">Markdown</option>
+        <option value="html">HTML</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-2 col-form-label" for="resumeContent">Body: </label>
+    <div class="col-10">
+      <textarea id="resumeContent" class="form-control" name="resume[content]" rows="10">
+        {{resume.content}}
+      </textarea>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-10">
+      <input type="text" id="resumeId" name="resume[id]" value="{{resume.id}}">
+      <input type="text" id="resumeUser" name="resume[user_id]" value="{{resume.user.id}}">
+    </div>
+    <div class="col-2">
+      <button id="btnSubmit" type="submit" class="btn btn-outline-primary">Submit</button>
+    </div>
+  </div>
+</form>
+</div>
