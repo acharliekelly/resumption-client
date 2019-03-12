@@ -2,7 +2,6 @@
 
 // basic/api.js
 //
-// TODO: add auth headers to every method
 
 const store = require('../store')
 const config = require('../config')
@@ -27,6 +26,7 @@ const getResume = (resumeId) => {
 }
 
 const createResume = (data) => {
+  console.log('Create Resume: ', data)
   return $.ajax({
     url: config.apiUrl + '/resumes',
     method: 'POST',

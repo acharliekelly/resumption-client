@@ -31,8 +31,8 @@ const onClickCreate = () => {
   // show Create form
   const formHtml = resumeForm()
   $('#displayPanel').html(formHtml)
-  $('#resume-form header').text('Create New Resume')
-  $('#resumeUser').val(1)
+  $('.resume-form header').text('Create New Resume')
+  $('#resumeUser').val(utils.getCurrentUserId())
   $('#resumeId').val('')
   $('#resumeForm').on('submit', onCreateSubmit)
 }

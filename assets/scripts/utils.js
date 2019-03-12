@@ -9,6 +9,14 @@ const isAuthenticated = () => {
   return (store.user && store.user.token)
 }
 
+const getCurrentUserId = () => {
+  return store.user.id
+}
+
+const currentUserFilter = (item) => {
+  return item.user.id === store.user.id
+}
+
 const storeCredentials = (formData) => {
   const credentials = formData.credentials
   store.tempCredentials = credentials
@@ -89,6 +97,8 @@ const todoOutput = (message, elementId) => {
 
 module.exports = {
   isAuthenticated,
+  getCurrentUserId,
+  currentUserFilter,
   storeCredentials,
   retrieveCredentials,
   dropCredentials,

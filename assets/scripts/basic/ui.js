@@ -14,8 +14,14 @@ const gotResumes = (responseData) => {
 
 // refreshes list view - run after delete
 const refreshResumeList = (responseData) => {
-  const resumesHtml = resumeListTmpl({ resumes: responseData.resumes })
-  $('#displayPanel').html(resumesHtml)
+  const resumeList = responseData.resumes.filter(utils.currentUserFilter)
+  let resumeHtml = ''
+  if (resumeList.length > 0) {
+    resumeHtml = resumeListTmpl({ resumes: resumeList })
+  } else {
+    resumeHtml = '<div style="text-align:center">You have no resumes yet.</div>'
+  }
+  $('#displayPanel').html(resumeHtml)
 }
 
 const gotOneResume = (responseData) => {
