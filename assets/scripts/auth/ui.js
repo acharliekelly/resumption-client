@@ -25,16 +25,17 @@ const authFail = () => {
   utils.errorMessage('Unable to log in')
   $('#modalFormDialog').modal('hide')
   $('#modalForm').html('')
+  utils.dropCredentials()
   refreshAuthElements()
 }
 
 // Public
 const loginSuccess = (responseData) => {
-  // const email = responseData.user.email
-  // const name = email[0].toUpperCase() + email.substring(1, email.indexOf('@'))
-  // const msg = `Welcome back, ${name}!`
+  const email = responseData.user.email
+  const name = email[0].toUpperCase() + email.substring(1, email.indexOf('@'))
+  const msg = `Welcome back, ${name}!`
   store.user = responseData.user
-  // utils.successMessage(msg)
+  utils.successMessage(msg)
   refreshAuthElements()
   hideModal()
 }
@@ -59,6 +60,11 @@ const changePasswordSuccess = () => {
 const signUpSuccess = (responseData) => {
   utils.userMessage(`Account created for "${responseData.user.email}".`)
   hideModal()
+
+  const newResponse = utils.freeLogin()
+  if (newResponse.status < 300) {
+    loginSuccess(newResponse)
+  }
 }
 
 // Public

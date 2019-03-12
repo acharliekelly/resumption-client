@@ -4,19 +4,25 @@
 //
 // TODO: add auth headers to every method
 
-// const store = require('../store')
+const store = require('../store')
 const config = require('../config')
 
 const getMyResumes = () => {
   return $.ajax({
-    url: config.apiUrl + '/resumes'
+    url: config.apiUrl + '/resumes',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
 const getResume = (resumeId) => {
   return $.ajax({
     url: config.apiUrl + '/resumes/' + resumeId,
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
@@ -24,6 +30,9 @@ const createResume = (data) => {
   return $.ajax({
     url: config.apiUrl + '/resumes',
     method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
     data
   })
 }
@@ -33,6 +42,9 @@ const updateResume = (data) => {
   return $.ajax({
     url: config.apiUrl + '/resumes/' + data.resume.id,
     method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
     data
   })
 }
@@ -40,7 +52,10 @@ const updateResume = (data) => {
 const deleteResume = (resumeId) => {
   return $.ajax({
     url: config.apiUrl + '/resumes/' + resumeId,
-    method: 'DELETE'
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 

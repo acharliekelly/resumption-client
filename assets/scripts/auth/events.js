@@ -2,7 +2,7 @@
 
 // auth/events.js
 // Controller for Authentication requests
-
+const utils = require('../utils')
 const authApi = require('./api')
 const authUi = require('./ui')
 const getFormFields = require('../../../lib/get-form-fields')
@@ -18,6 +18,7 @@ const onLoginSubmit = (event) => {
 
 const onSignupSubmit = (event) => {
   const formData = getFormData(event)
+  utils.storeCredentials(formData)
   authApi.signUp(formData)
     .then(authUi.signUpSuccess)
     .catch(authUi.authFail)
@@ -47,9 +48,9 @@ const getFormData = (event) => {
 }
 
 const initHandlers = () => {
-  $('.modal:has(form)').on('show.bs.modal', function () {
-    $(this).find('input').val('')
-  })
+  // $('.modal:has(form)').on('show.bs.modal', function () {
+  //   $(this).find('input').val('')
+  // })
 
   $('#modalLoginForm').on('submit', onLoginSubmit)
   $('#modalSignupForm').on('submit', onSignupSubmit)
@@ -71,6 +72,8 @@ const initHandlers = () => {
   })
 
   $('#signoutBtn').on('click', onSignoutConfirm)
+
+  authUi.refreshAuthElements()
 }
 
 module.exports = {
