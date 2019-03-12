@@ -1,13 +1,25 @@
 'use strict'
 // Common utility functions
 
-// const store = require('./store')
+const store = require('./store')
 
 // returns boolean value for whether token exists
 const isAuthenticated = () => {
   // return (store.user && store.user.token)
   // change once authentication is running
   return true
+}
+
+const storeCurrentResume = (resumeData) => {
+  store.currentResume = resumeData
+}
+
+const dropCurrentResume = () => {
+  store.currentResume = null
+}
+
+const getCurrentResume = () => {
+  return store.currentResume
 }
 
 const userMessage = function (message, alertClass = 'info') {
@@ -47,6 +59,9 @@ const todoOutput = (message, elementId) => {
 
 module.exports = {
   isAuthenticated,
+  storeCurrentResume,
+  dropCurrentResume,
+  getCurrentResume,
   userMessage,
   warningMessage,
   successMessage,
