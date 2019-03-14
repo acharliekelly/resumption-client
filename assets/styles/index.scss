@@ -1,6 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
-
-@import 'layout.scss';
+@import 'layout';
 
 
 .todo {
@@ -10,4 +9,16 @@
   &:before {
     content: 'TODO: ';
   }
+}
+
+.resume-content {
+  background-color: #eee;
+  border: thin solid #666;
+  border-radius: 3px;
+  padding: 2px;
+  max-width: 90%;
+}
+
+nav .button-group .button-group {
+  display: none;
 }
