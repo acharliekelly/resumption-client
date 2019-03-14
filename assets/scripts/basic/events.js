@@ -37,6 +37,7 @@ const onClickCreate = () => {
   $('#resumeUser').val(utils.getCurrentUserId())
   $('#resumeId').val('')
   $('#resumeForm').on('submit', onCreateSubmit)
+  initEditor()
 }
 
 const onCreateSubmit = (event) => {
@@ -59,6 +60,7 @@ const onClickEdit = () => {
   $('.resume-form header').text('Edit Resume ' + currentResume.id)
   $('#resumeForm select').val(currentResume.format)
   $('#resumeForm').on('submit', onUpdateSubmit)
+  initEditor()
 }
 
 const onUpdateSubmit = (event) => {
@@ -97,6 +99,13 @@ const hideChildButtons = () => {
   $('#menuPanel .button-group .button-group').hide()
 }
 
+const initEditor = () => {
+  const simpleMde = new SimpleMDE({
+    toolbar: ['bold', 'italic', 'heading', '|', 'quote'],
+    element: $('#resumeContent')[0]
+  })
+}
+
 const initHandlers = () => {
   // menu buttons
   $('#btnMyResumes').on('click', onGetResumes)
@@ -104,6 +113,7 @@ const initHandlers = () => {
     $('#newResumeOptions').show()
   })
   $('#btnNewResumeBlank').on('click', onClickCreate)
+  $('#btnNewResumeTemplate').on('click', onClickCreate)
 
   // delegate buttons - will be created by handlebars
   $('#displayPanel').on('click', '.resume button.open-resume', onOpenResume)
@@ -116,5 +126,6 @@ const initHandlers = () => {
 }
 
 module.exports = {
-  initHandlers
+  initHandlers,
+  initEditor
 }
