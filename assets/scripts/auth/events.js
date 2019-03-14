@@ -2,7 +2,6 @@
 
 // auth/events.js
 // Controller for Authentication requests
-const utils = require('../utils')
 const authApi = require('./api')
 const authUi = require('./ui')
 const getFormFields = require('../../../lib/get-form-fields')
@@ -16,10 +15,22 @@ const onLoginSubmit = (event) => {
 
 const onSignupSubmit = (event) => {
   const formData = getFormData(event)
-  utils.storeCredentials(formData)
   authApi.signUp(formData)
     .then(authUi.signUpSuccess)
     .catch(authUi.authFail)
+}
+
+const onPassthroughSubmit = (event) => {
+  const formData = getFormData(event)
+  console.log('Sign up form:', formData)
+  authApi.signUp(formData).then(() => {
+    console.log('Successful signup!')
+    console.log('Email: ' + formData.credentials.email)
+    console.log('Password: ' + formData.credentials.password)
+    authApi.logIn(formData.credentials.email, formData.credentials.password)
+      .then(authUi.loginSuccess)
+      .catch(authUi.authFail)
+  }).catch(authUi.authFail)
 }
 
 const onChangePasswordSubmit = (event) => {
@@ -71,6 +82,7 @@ const initHandlers = () => {
 }
 
 module.exports = {
+  onPassthroughSubmit,
   onSignupSubmit,
   onLoginSubmit,
   onChangePasswordSubmit,
