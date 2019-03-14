@@ -19,6 +19,27 @@ const onGetResumes = () => {
 const onOpenResume = (event) => {
   // show one resume
   const resumeId = getTargetId(event)
+  openResume(resumeId)
+}
+
+const onClickResume = (event) => {
+  const tag = $(event.target).prop('tagName')
+  let id
+  switch (tag) {
+    case 'BUTTON':
+    case 'SECTION':
+      id = getTargetId(event)
+      break
+    case 'DIV':
+      id = $(event.target).parent().data('id')
+      break
+    default:
+      console.log('Unexpected tag encountered!')
+  }
+  openResume(id)
+}
+
+const openResume = (resumeId) => {
   api.getResume(resumeId)
     .then(ui.gotOneResume)
     .catch(ui.retrievalFailure)
@@ -56,9 +77,6 @@ const onClickEdit = () => {
   $('#resumeForm select').val(currentResume.format)
   // $('#resumeForm #resumeId').val(currentResume.id)
   // $('#resumeForm #resumeUser').val(currentResume.user.id)
-  // $('#resumeForm #resumeName').val(currentResume.name)
-  // $('#resumeForm #resumeFormat').val(currentResume.format)
-  // $('#resumeForm textarea').val(currentResume.content)
   $('#resumeForm').on('submit', onUpdateSubmit)
 }
 
@@ -99,6 +117,7 @@ const initHandlers = () => {
 
   // delegate buttons - will be created by handlebars
   $('#displayPanel').on('click', '.resume button.open-resume', onOpenResume)
+  $('#displayPanel').on('click', '.resume-list section.resume', onClickResume)
   $('#displayPanel').on('click', '.resume-view button.edit-resume', onClickEdit)
   $('#displayPanel').on('click', '.resume-view button.delete-resume', onClickDelete)
   // delete confirmed
