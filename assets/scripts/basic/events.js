@@ -7,6 +7,8 @@ const utils = require('../utils')
 const api = require('./api')
 const ui = require('./ui')
 const resumeForm = require('../templates/resume-form.handlebars')
+const resumeTmpl = require('../templates/md-template.handlebars')
+const resumeUpload = require('../templates/resume-upload.handlebars')
 const getFormFields = require('../../../lib/get-form-fields')
 
 const onGetResumes = () => {
@@ -18,9 +20,29 @@ const onGetResumes = () => {
 }
 
 const onOpenResume = (event) => {
-  hideChildButtons()
   // show one resume
   const resumeId = getTargetId(event)
+  openResume(resumeId)
+}
+
+const onClickResume = (event) => {
+  const tag = $(event.target).prop('tagName')
+  let id
+  switch (tag) {
+    case 'BUTTON':
+    case 'SECTION':
+      id = getTargetId(event)
+      break
+    case 'DIV':
+      id = $(event.target).parent().data('id')
+      break
+    default:
+      console.log('Unexpected tag encountered!')
+  }
+  openResume(id)
+}
+
+const openResume = (resumeId) => {
   api.getResume(resumeId)
     .then(ui.gotOneResume)
     .catch(ui.retrievalFailure)
@@ -29,15 +51,30 @@ const onOpenResume = (event) => {
 // New Resume button clicked -
 // display form, define submit fn
 const onClickCreate = () => {
-  console.log('Create Resume button clicked!')
   // show Create form
+  initForm()
+  initEditor()
+}
+
+const onTmplCreate = () => {
+  initForm()
+  initEditorTempl()
+}
+
+const onUploadClick = () => {
+  const formHtml = resumeUpload()
+  $('#displayPanel').html(formHtml)
+  $('.resume-form header').text('Upload Resume')
+  $('#resumeForm').on('submit', onUploadSubmit)
+}
+
+const initForm = () => {
   const formHtml = resumeForm()
   $('#displayPanel').html(formHtml)
   $('.resume-form header').text('Create New Resume')
   $('#resumeUser').val(utils.getCurrentUserId())
   $('#resumeId').val('')
   $('#resumeForm').on('submit', onCreateSubmit)
-  initEditor()
 }
 
 const onCreateSubmit = (event) => {
@@ -47,6 +84,11 @@ const onCreateSubmit = (event) => {
   api.createResume(formData)
     .then(ui.gotOneResume)
     .catch(ui.creationFailure)
+}
+
+const onUploadSubmit = () => {
+  console.log('File Uploaded!')
+  // TODO: handle file upload
 }
 
 // Edit Resume button clicked -
@@ -101,8 +143,14 @@ const hideChildButtons = () => {
 
 const initEditor = () => {
   const simpleMde = new SimpleMDE({
-    toolbar: ['bold', 'italic', 'heading', '|', 'quote'],
     element: $('#resumeContent')[0]
+  })
+}
+
+const initEditorTempl = () => {
+  const simpleMde = new SimpleMDE({
+    element: $('#resumeContent')[0],
+    value: resumeTmpl()
   })
 }
 
@@ -113,10 +161,12 @@ const initHandlers = () => {
     $('#newResumeOptions').show()
   })
   $('#btnNewResumeBlank').on('click', onClickCreate)
-  $('#btnNewResumeTemplate').on('click', onClickCreate)
+  $('#btnNewResumeTemplate').on('click', onTmplCreate)
+  $('#btnNewResumeUpload').on('click', onUploadClick)
 
   // delegate buttons - will be created by handlebars
   $('#displayPanel').on('click', '.resume button.open-resume', onOpenResume)
+  $('#displayPanel').on('click', '.resume-list section.resume', onClickResume)
   $('#displayPanel').on('click', '.resume-view button.edit-resume', onClickEdit)
   $('#displayPanel').on('click', '.resume-view button.delete-resume', onClickDelete)
   // delete confirmed
