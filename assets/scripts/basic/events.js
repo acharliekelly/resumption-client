@@ -34,7 +34,8 @@ const onClickResume = (event) => {
       id = $(event.target).parent().data('id')
       break
     default:
-      console.log('Unexpected tag encountered!')
+      // do nothing
+      return
   }
   openResume(id)
 }
@@ -48,7 +49,6 @@ const openResume = (resumeId) => {
 // New Resume button clicked -
 // display form, define submit fn
 const onClickCreate = () => {
-  console.log('Create Resume button clicked!')
   // show Create form
   const formHtml = resumeForm()
   $('#displayPanel').html(formHtml)
