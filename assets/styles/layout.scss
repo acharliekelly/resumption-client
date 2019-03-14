@@ -1,5 +1,8 @@
 /* Layout */
 
+body {
+  background-color: #900;
+}
 
 .container {
   // display: flex;
@@ -47,6 +50,16 @@ main {
   margin: 3px auto;
 }
 
+.resume-view .resume-content {
+  background-color: #eee;
+  border: thin solid #666;
+  border-radius: 3px;
+  padding: 2px;
+  max-width: 600px;
+  min-height: 400px;
+  overflow: auto;
+}
+
 nav {
   background-color: #dedede;
   border: thin solid #cdcdcd;
@@ -58,4 +71,9 @@ nav {
     margin: 5px 0;
     width: 80%;
   }
+}
+
+button.form-control {
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
