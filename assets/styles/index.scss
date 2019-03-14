@@ -11,12 +11,14 @@
   }
 }
 
-.resume-content {
+.resume-view .resume-content {
   background-color: #eee;
   border: thin solid #666;
   border-radius: 3px;
   padding: 2px;
-  max-width: 90%;
+  max-width: 600px;
+  min-height: 400px;
+  overflow: auto;
 }
 
 nav .button-group .button-group {
