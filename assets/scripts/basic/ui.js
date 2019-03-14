@@ -14,7 +14,7 @@ const gotResumes = (responseData) => {
 
 // refreshes list view - run after delete
 const refreshResumeList = (responseData) => {
-  const resumeList = responseData.resumes.filter(utils.currentUserFilter)
+  const resumeList = responseData.resumes
   let resumeHtml = ''
   if (resumeList.length > 0) {
     resumeHtml = resumeListTmpl({ resumes: resumeList })
