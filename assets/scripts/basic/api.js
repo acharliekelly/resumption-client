@@ -26,7 +26,6 @@ const getResume = (resumeId) => {
 }
 
 const createResume = (data) => {
-  console.log('Create Resume: ', data)
   return $.ajax({
     url: config.apiUrl + '/resumes',
     method: 'POST',
@@ -38,7 +37,6 @@ const createResume = (data) => {
 }
 
 const updateResume = (data) => {
-  console.log('Update: ', data)
   return $.ajax({
     url: config.apiUrl + '/resumes/' + data.resume.id,
     method: 'PATCH',

@@ -36,42 +36,34 @@ const refreshResumeView = (responseData) => {
 }
 
 const updateSuccess = (responseData) => {
-  console.log(responseData)
   utils.successMessage('Update Successful')
   refreshResumeView(responseData)
 }
 
 const updateFailure = (responseData) => {
-  console.log(responseData)
   utils.errorMessage('Update failed')
 }
 
 const creationSuccess = (responseData) => {
-  console.log(responseData)
   utils.successMessage('Resume created')
   refreshResumeView(responseData)
 }
 
 const creationFailure = (responseData) => {
-  console.log(responseData)
   utils.errorMessage('Unable to create object')
 }
 
 const deletionSuccess = (responseData) => {
-  console.log(responseData)
-
   utils.successMessage('Resume Deleted!')
   // go back to list view
   $('#btnMyResumes').trigger('click')
 }
 
 const deletionFailure = (responseData) => {
-  console.log(responseData)
   utils.errorMessage('Deletion failed')
 }
 
 const retrievalFailure = (responseData) => {
-  console.log(responseData)
   utils.errorMessage('Unable to retrieve item')
 }
 
