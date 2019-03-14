@@ -9,8 +9,11 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.1.2",
+    "bootstrap3-wysihtml5-npm": "^0.3.3-npm.12",
     "jquery": "^3.3.1",
-    "popper.js": "^1.14.3"
+    "popper.js": "^1.14.3",
+    "simplemde": "^1.11.2",
+    "woofmark": "^4.2.6"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

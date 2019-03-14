@@ -8,8 +8,10 @@
       <link rel="shortcut icon" type="image/gif" href="public/images/ck.gif">
 
       <link rel="stylesheet" type="text/css" href="public/default.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 
       <!-- Do not add `script` tags-->
+      <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
       <!-- prevent flash of unstyled content before jQuery loads -->
@@ -52,11 +54,13 @@
             <div class="button-group">
               <button id="btnMyResumes" class="btn btn-outline-primary">My Resumes</button>
               <button id="btnCreateResume" class="btn btn-outline-secondary">New Resume</button>
-              <!-- <hr>
-              <button id="btnSections" class="btn btn-outline-primary">Show Sections</button>
-              <button id="btnNewSection" class="btn btn-outline-secondary">New Section</button>
               <hr>
-              <button id="btnTemplates" class="btn btn-outline-primary">Show Templates</button> -->
+              <div id="newResumeOptions" class="button-group">
+                <div class="label">Options</div>
+                <button id="btnNewResumeBlank" type="button" class="btn btn-outline-primary">Blank</button>
+                <button id="btnNewResumeTemplate" type="button" class="btn btn-outline-primary">From Template</button>
+                <button id="btnNewResumeUpload" type="button" class="btn btn-outline-primary">Upload File</button>
+              </div>
             </div>
           </nav>
         </div>
