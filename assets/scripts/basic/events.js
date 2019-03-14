@@ -10,6 +10,7 @@ const resumeForm = require('../templates/resume-form.handlebars')
 const getFormFields = require('../../../lib/get-form-fields')
 
 const onGetResumes = () => {
+  hideChildButtons()
   // get resume list
   api.getMyResumes()
     .then(ui.gotResumes)
@@ -17,6 +18,7 @@ const onGetResumes = () => {
 }
 
 const onOpenResume = (event) => {
+  hideChildButtons()
   // show one resume
   const resumeId = getTargetId(event)
   api.getResume(resumeId)
@@ -38,6 +40,7 @@ const onClickCreate = () => {
 }
 
 const onCreateSubmit = (event) => {
+  hideChildButtons()
   event.preventDefault()
   const formData = getFormData(event)
   api.createResume(formData)
@@ -48,21 +51,18 @@ const onCreateSubmit = (event) => {
 // Edit Resume button clicked -
 //
 const onClickEdit = () => {
+  hideChildButtons()
   // show form
   const currentResume = utils.getCurrentResume()
   const formHtml = resumeForm({ resume: currentResume })
   $('#displayPanel').html(formHtml)
   $('.resume-form header').text('Edit Resume ' + currentResume.id)
   $('#resumeForm select').val(currentResume.format)
-  // $('#resumeForm #resumeId').val(currentResume.id)
-  // $('#resumeForm #resumeUser').val(currentResume.user.id)
-  // $('#resumeForm #resumeName').val(currentResume.name)
-  // $('#resumeForm #resumeFormat').val(currentResume.format)
-  // $('#resumeForm textarea').val(currentResume.content)
   $('#resumeForm').on('submit', onUpdateSubmit)
 }
 
 const onUpdateSubmit = (event) => {
+  hideChildButtons()
   const formData = getFormData(event)
   api.updateResume(formData)
     .then(ui.updateSuccess)
@@ -70,6 +70,7 @@ const onUpdateSubmit = (event) => {
 }
 
 const onClickDelete = (event) => {
+  hideChildButtons()
   const resumeId = getTargetId(event)
   $('#modalConfirmDeleteButton').data('id', resumeId)
   $('#modalConfirmDeleteDialog').modal('show')
@@ -92,10 +93,17 @@ const getFormData = (event) => {
   return getFormFields(event.target)
 }
 
+const hideChildButtons = () => {
+  $('#menuPanel .button-group .button-group').hide()
+}
+
 const initHandlers = () => {
   // menu buttons
   $('#btnMyResumes').on('click', onGetResumes)
-  $('#btnCreateResume').on('click', onClickCreate)
+  $('#btnCreateResume').on('click', () => {
+    $('#newResumeOptions').show()
+  })
+  $('#btnNewResumeBlank').on('click', onClickCreate)
 
   // delegate buttons - will be created by handlebars
   $('#displayPanel').on('click', '.resume button.open-resume', onOpenResume)
@@ -103,6 +111,8 @@ const initHandlers = () => {
   $('#displayPanel').on('click', '.resume-view button.delete-resume', onClickDelete)
   // delete confirmed
   $('#modalConfirmDeleteButton').on('click', onDeleteConfirm)
+
+  $('#newResumeOptions').hide()
 }
 
 module.exports = {
