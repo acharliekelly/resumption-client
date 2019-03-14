@@ -2,7 +2,6 @@
 // Common utility functions
 
 const store = require('./store')
-const config = require('./config')
 
 // returns boolean value for whether token exists
 const isAuthenticated = () => {
@@ -11,41 +10,6 @@ const isAuthenticated = () => {
 
 const getCurrentUserId = () => {
   return store.user.id
-}
-
-const currentUserFilter = (item) => {
-  return item.user.id === store.user.id
-}
-
-const storeCredentials = (formData) => {
-  const credentials = formData.credentials
-  store.tempCredentials = credentials
-}
-
-const retrieveCredentials = () => {
-  return store.tempCredentials
-}
-
-const dropCredentials = () => {
-  if (store.tempCredentials) {
-    store.tempCredentials = null
-  }
-}
-
-const freeLogin = () => {
-  if (store.tempCredentials) {
-    return $.ajax({
-      url: config.apiUrl + '/sign-in',
-      method: 'POST',
-
-      data: {
-        email: store.tempCredentials.email,
-        password: store.tempCredentials.password
-      }
-    })
-  } else {
-    return false
-  }
 }
 
 const storeCurrentResume = (resumeData) => {
@@ -98,11 +62,6 @@ const todoOutput = (message, elementId) => {
 module.exports = {
   isAuthenticated,
   getCurrentUserId,
-  currentUserFilter,
-  storeCredentials,
-  retrieveCredentials,
-  dropCredentials,
-  freeLogin,
   storeCurrentResume,
   dropCurrentResume,
   getCurrentResume,
