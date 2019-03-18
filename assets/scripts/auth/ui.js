@@ -30,7 +30,6 @@ const authFail = () => {
   utils.errorMessage('Unable to log in')
   $('#modalFormDialog').modal('hide')
   $('#modalForm').html('')
-  utils.dropCredentials()
   refreshAuthElements()
 }
 
@@ -66,11 +65,10 @@ const changePasswordSuccess = () => {
 const signUpSuccess = (responseData) => {
   utils.userMessage(`Account created for "${responseData.user.email}".`)
   hideModal()
-
-  const newResponse = utils.freeLogin()
-  if (newResponse.status < 300) {
-    loginSuccess(newResponse)
-  }
+  // const newResponse = utils.freeLogin()
+  // if (newResponse.status < 300) {
+  //   loginSuccess(newResponse)
+  // }
 }
 
 // Public
