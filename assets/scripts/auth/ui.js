@@ -65,10 +65,11 @@ const changePasswordSuccess = () => {
 const signUpSuccess = (responseData) => {
   utils.userMessage(`Account created for "${responseData.user.email}".`)
   hideModal()
-  // const newResponse = utils.freeLogin()
-  // if (newResponse.status < 300) {
-  //   loginSuccess(newResponse)
-  // }
+}
+
+const signupFail = (responseData) => {
+  utils.errorMessage(`Unable to create account for ${responseData.user.email}`)
+  hideModal()
 }
 
 // Public
@@ -95,6 +96,7 @@ module.exports = {
   loginSuccess,
   changePasswordSuccess,
   signUpSuccess,
+  signupFail,
   signOutSuccess,
   signOutFail
 }

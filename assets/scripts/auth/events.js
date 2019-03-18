@@ -40,10 +40,6 @@ const getFormData = (event) => {
 }
 
 const initHandlers = () => {
-  // $('.modal:has(form)').on('show.bs.modal', function () {
-  //   $(this).find('input').val('')
-  // })
-
   $('#modalLoginForm').on('submit', onLoginSubmit)
   $('#modalSignupForm').on('submit', onSignupSubmit)
   $('#modalChangePasswordForm').on('submit', onChangePasswordSubmit)

@@ -12,18 +12,6 @@ const getCurrentUserId = () => {
   return store.user.id
 }
 
-const storeCurrentResume = (resumeData) => {
-  store.currentResume = resumeData
-}
-
-const dropCurrentResume = () => {
-  store.currentResume = null
-}
-
-const getCurrentResume = () => {
-  return store.currentResume
-}
-
 const userMessage = function (message, alertClass = 'info') {
   alertMessage(message, alertClass)
 }
