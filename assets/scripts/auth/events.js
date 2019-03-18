@@ -2,7 +2,6 @@
 
 // auth/events.js
 // Controller for Authentication requests
-const utils = require('../utils')
 const authApi = require('./api')
 const authUi = require('./ui')
 const getFormFields = require('../../../lib/get-form-fields')
@@ -16,7 +15,6 @@ const onLoginSubmit = (event) => {
 
 const onSignupSubmit = (event) => {
   const formData = getFormData(event)
-  utils.storeCredentials(formData)
   authApi.signUp(formData)
     .then(authUi.signUpSuccess)
     .catch(authUi.authFail)
