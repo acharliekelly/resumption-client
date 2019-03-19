@@ -50,9 +50,6 @@ const todoOutput = (message, elementId) => {
 module.exports = {
   isAuthenticated,
   getCurrentUserId,
-  storeCurrentResume,
-  dropCurrentResume,
-  getCurrentResume,
   userMessage,
   warningMessage,
   successMessage,
