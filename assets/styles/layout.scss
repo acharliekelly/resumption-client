@@ -38,6 +38,13 @@ header {
   }
 }
 
+#titlePanel .logo {
+  width: 70px;
+  margin-right: 5px;
+  border: thin gray inset;
+  border-radius: 2px;
+}
+
 main {
   margin: 0 10%;
 }
