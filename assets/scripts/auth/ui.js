@@ -28,8 +28,7 @@ const clearUserData = () => {
 // Public
 const authFail = () => {
   utils.errorMessage('Unable to log in')
-  $('#modalFormDialog').modal('hide')
-  $('#modalForm').html('')
+  hideModal()
   refreshAuthElements()
 }
 

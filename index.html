@@ -6,6 +6,7 @@
 
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/gif" href="public/images/resumpt1.png">
+      <link href="https://fonts.googleapis.com/css?family=Lobster|Saira+Extra+Condensed|Poppins" rel="stylesheet">
 
       <!-- <link rel="stylesheet" type="text/css" href="public/default.css"> -->
 
@@ -15,7 +16,7 @@
       <!-- prevent flash of unstyled content before jQuery loads -->
           <style type="text/css">
             body {
-            animation: fadein 5s;
+            animation: fadein 2s;
             }
             @keyframes fadein {
               from { opacity: 0; }
@@ -75,7 +76,7 @@
               </div>
               <div class="modal-body">
                     <!-- Login Form -->
-                <form id="modalLoginForm" class="modal-form">
+                <form id="modalLoginForm" class="modal-form" data-submit="#modalLoginSubmitBtn">
                   <div id="loginFormContent">
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
@@ -113,7 +114,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form id="modalSignupForm" class="modal-form">
+                <form id="modalSignupForm" class="modal-form" data-submit="#modalSignupSubmitBtn">
                   <!-- Sign Up Form -->
                   <div id="signupFormContent">
                     <div class="input-group mb-3">
@@ -159,7 +160,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form id="modalChangePasswordForm" class="modal-form">
+                <form id="modalChangePasswordForm" class="modal-form" data-submit="#modalChangePasswordSubmitBtn">
                   <!-- Change Password Form -->
                   <div id="changePasswordFormContent">
                     <div class="input-group mb-3">

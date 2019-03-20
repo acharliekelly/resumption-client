@@ -19,7 +19,7 @@ const refreshResumeList = (responseData) => {
   if (resumeList.length > 0) {
     resumeHtml = resumeListTmpl({ resumes: resumeList })
   } else {
-    resumeHtml = '<div style="text-align:center">You have no resumes yet.</div>'
+    resumeHtml = '<div class="resume-message">You have no resumes yet.</div>'
   }
   $('#displayPanel').html(resumeHtml)
 }
@@ -55,6 +55,7 @@ const creationFailure = (responseData) => {
 
 const deletionSuccess = (responseData) => {
   utils.successMessage('Resume Deleted!')
+  utils.dropCurrentResume()
   // go back to list view
   $('#btnMyResumes').trigger('click')
 }
@@ -64,7 +65,7 @@ const deletionFailure = (responseData) => {
 }
 
 const retrievalFailure = (responseData) => {
-  utils.errorMessage('Unable to retrieve item')
+  utils.errorMessage('Unable to retrieve resume')
 }
 
 module.exports = {
