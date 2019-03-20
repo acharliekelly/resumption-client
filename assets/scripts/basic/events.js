@@ -122,6 +122,8 @@ const initHandlers = () => {
   $('#displayPanel').on('click', '.resume-view button.delete-resume', onClickDelete)
   // delete confirmed
   $('#modalConfirmDeleteButton').on('click', onDeleteConfirm)
+  // cancel edit resume
+  $('#displayPanel').on('click', '.resume-form #btnCancel', onGetResumes)
 }
 
 module.exports = {
