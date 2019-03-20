@@ -26,9 +26,12 @@
     </div>
   </div>
   <div class="form-group row">
-    <div class="col-10">
+    <div class="col-8">
       <input type="hidden" id="resumeUser" name="resume[user_id]" value="{{resume.user.id}}">
       <input type="hidden" id="resumeId" name="resume[id]" value="{{resume.id}}">
+    </div>
+    <div class="col-2">
+      <button id="btnCancel" type="button" class="btn btn-outline-secondary">Cancel</button>
     </div>
     <div class="col-2">
       <button id="btnSubmit" type="submit" class="btn btn-outline-primary">Submit</button>
