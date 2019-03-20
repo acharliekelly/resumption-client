@@ -12,6 +12,18 @@ const getCurrentUserId = () => {
   return store.user.id
 }
 
+const storeCurrentResume = (resumeData) => {
+  store.currentResume = resumeData
+}
+
+const dropCurrentResume = () => {
+  store.currentResume = null
+}
+
+const getCurrentResume = () => {
+  return store.currentResume
+}
+
 const userMessage = function (message, alertClass = 'info') {
   alertMessage(message, alertClass)
 }
@@ -42,6 +54,15 @@ const alertMessage = function (message, cls = 'info', timeout = 5000) {
   }, timeout)
 }
 
+const testAlert = () => {
+  const msg = 'This is a test of the Emergency Broadcast System.'
+  const html = `<div class="alert alert-danger fade show" role="alert" height="80%">${msg}</div>`
+  $('#userMessage').html(html).alert()
+  $('#userMessage').on('click', () => {
+    $('#userMessage').alert('close').html('')
+  })
+}
+
 const todoOutput = (message, elementId) => {
   const html = `<div class="todo">${message}</div>`
   $(`#${elementId}`).html(html)
@@ -50,11 +71,15 @@ const todoOutput = (message, elementId) => {
 module.exports = {
   isAuthenticated,
   getCurrentUserId,
+  storeCurrentResume,
+  dropCurrentResume,
+  getCurrentResume,
   userMessage,
   warningMessage,
   successMessage,
   failure,
   errorMessage,
   alertMessage,
-  todoOutput
+  todoOutput,
+  testAlert
 }
