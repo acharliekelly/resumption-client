@@ -9,9 +9,14 @@ Links:
 * [Deployed API](https://boiling-hollows-87968.herokuapp.com/)
 * [Deployed Client](https://acharliekelly.github.io/resumption-client)
 
-This is the front-end of my Online Resume App. It is pretty much just like every online resume app, except that there's just me writing it, and I'm under some time constraints that are perhaps more severe than those on commercial apps. As such, I've made some modifications to the basic idea in order to accomodate my schedule. But also, my reason for creating this app is that my own resume needs are fairly complex. So I want an app that lets me try more things - maybe ultimately do some A/B testing on hiring managers.
 
-So, core idea is that a resume can be broken up into sections (not an especially ground-breaking idea). But in my app, the relationship of sections to resumes is many-to-many. I want the ability to create multiple versions of each section (ie, different combinations of skills, different work histories, etc). They'll all be accurate, but I have a long history, and not all my past jobs are relevant to all prospective roles.
+This is the front-end of my Online Resume App.
+
+A couple of things I'm happy about on the client:
+* One nice feature of the modal forms (which I otherwise copied from Tic-Tac-Toe), is an added a keydown event handler. Since Bootstrap puts its modal submit buttons outside of its modal forms, pressing return doesn't automatically do anything. However, all my authentication forms respond to Enter (submit) and Escape (close)
+* When you're viewing a resource, I put a copy into my `store` hash. That way, you can edit it any time without making a new request - it just loads the current values into the edit resource form
+* This also means avoiding the problem a lot of students had, in which you have to fill in all the fields or else overwrite them with empty strings. All fields are filled (via jQuery) from the stored values. The only way you overwrite them is if you edit the fields and then submit the form.
+* I got the layout to stop resizing the panel (and therefore pushing everything down) whenever user feedback appears. I really hate that.
 
 
 ## User Stories
@@ -33,3 +38,5 @@ Will create wireframes for the following views:
   1. List your resumes [Resource List](p2-wireframes/wireframe_resources-list.png)
   2. Show an  existing resume [View Resource](p2-wireframes/wireframe_show.png)
   3. Create new resume [Create New](p2-wireframes/wireframe_new.png)
+
+For more information about this app, please see the [README for the API](https://github.com/acharliekelly/resumption-api/blob/master/README.md).
